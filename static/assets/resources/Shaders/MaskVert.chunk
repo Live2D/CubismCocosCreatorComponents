@@ -1,0 +1,13 @@
+precision highp float;
+#include <legacy/input>
+#include "CubismToMaskClipPos"
+#include "CubismMaskShaderVariables"
+
+out vec2 v2f_texCoord;
+
+highp vec4 vert() {
+  vec4 inVert;
+  CCVertInput(inVert);
+  v2f_texCoord = a_texCoord;
+  return CubismToMaskClipPos(inVert.xy, cubism_MaskTile, cubism_MaskTransform);
+}

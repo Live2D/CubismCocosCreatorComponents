@@ -1,0 +1,13 @@
+vec2 CubismToMaskCoordinates(vec2 vertex, vec4 tile, vec4 transform) {
+  vec2 result = vertex;
+
+  float scale = tile.w * transform.z;
+  vec2 offset = transform.xy;
+  vec2 origin = (tile.yz + vec2(0.5, 0.5)) * tile.ww;
+
+  result.xy -= offset;
+  result *= scale;
+  result.xy += origin;
+
+  return result;
+}

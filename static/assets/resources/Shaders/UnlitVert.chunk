@@ -1,0 +1,31 @@
+precision highp float;
+#include <legacy/input>
+#include <builtin/uniforms/cc-local> // cc_matWorld
+#include <builtin/uniforms/cc-global> // cc_matProj, cc_matView
+#include "CubismToMaskCoordinates"
+
+in vec4 a_color;
+
+#if USED_MASK
+#include "CubismMaskShaderVariables"
+
+//CUBISM_VERTEX_OUTPUT
+out vec2 cubismMaskTexCoord; //float2 cubism_MaskCoordinates : TEXCOORD3;
+#endif
+
+out vec4 v2f_color;
+out vec2 v2f_texCoord;
+
+highp vec4 vert() {
+  vec4 inVert;
+  CCVertInput(inVert);
+
+  v2f_color = a_color;
+  v2f_texCoord = vec2(a_texCoord.x, 1.0 - a_texCoord.y);
+
+#if USED_MASK
+  // CUBISM_INITIALIZE_VERTEX_OUTPUT(IN, OUT);
+  cubismMaskTexCoord = CubismToMaskCoordinates(inVert.xy, cubism_MaskTile, cubism_MaskTransform);
+#endif
+  return cc_matProj * (cc_matView * cc_matWorld) * inVert;
+}

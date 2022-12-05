@@ -1,0 +1,85 @@
+// Effect Syntax Guide: https://github.com/cocos-creator/docs-3d/blob/master/zh/material-system/effect-syntax.md
+
+CCEffect %{
+  techniques:
+  - name: base
+    passes:
+    - vert: unlit-vs:vert
+      frag: unlit-fs:frag
+      rasterizerState:
+        cullMode: none #none, back, front
+      depthStencilState:
+        depthTest: true
+        depthWrite: false
+      blendState: &alphablend #Premultiplied Alpha
+        targets:
+        - blend: true
+          blendSrc: one
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: one
+          blendDstAlpha: one_minus_src_alpha
+      properties: &standard_props
+        mainTexture:                  { value: white }
+        cubism_ModelOpacity:          { value: 1 }
+        cubism_internal_mask_texture: { value: white, target: cubism_MaskTexture }
+        cubism_internal_tile:         { value: [0, 0, 0, 0], target: cubism_MaskTile }
+        cubism_internal_transform:    { value: [0, 0, 0, 0], target: cubism_MaskTransform }
+        multiplyColor:                { value: [1, 1, 1, 1] }
+        screenColor:                  { value: [0, 0, 0, 0] }
+  - name: additive
+    passes:
+    - vert: unlit-vs:vert
+      frag: unlit-fs:frag
+      rasterizerState:
+        cullMode: none
+      depthStencilState:
+        depthTest: true
+        depthWrite: false
+      blendState: &additive_blend
+        targets:
+        - blend: true
+          blendSrc: one
+          blendDst: one
+          blendSrcAlpha: zero
+          blendDstAlpha: one
+      properties: &standard_props
+        mainTexture:                  { value: white }
+        cubism_ModelOpacity:          { value: 1 }
+        cubism_internal_mask_texture: { value: white, target: cubism_MaskTexture }
+        cubism_internal_tile:         { value: [0, 0, 0, 0], target: cubism_MaskTile }
+        cubism_internal_transform:    { value: [0, 0, 0, 0], target: cubism_MaskTransform }
+        multiplyColor:                { value: [1, 1, 1, 1] }
+        screenColor:                  { value: [0, 0, 0, 0] }
+  - name: multiply
+    passes:
+    - vert: unlit-vs:vert
+      frag: unlit-fs:frag
+      rasterizerState:
+        cullMode: none
+      depthStencilState:
+        depthTest: true
+        depthWrite: false
+      blendState: &multiply_blend
+        targets:
+        - blend: true
+          blendSrc: dst_color
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: zero
+          blendDstAlpha: one
+      properties: &standard_props
+        mainTexture:                  { value: white }
+        cubism_ModelOpacity:          { value: 1 }
+        cubism_internal_mask_texture: { value: white, target: cubism_MaskTexture }
+        cubism_internal_tile:         { value: [0, 0, 0, 0], target: cubism_MaskTile }
+        cubism_internal_transform:    { value: [0, 0, 0, 0], target: cubism_MaskTransform }
+        multiplyColor:                { value: [1, 1, 1, 1] }
+        screenColor:                  { value: [0, 0, 0, 0] }
+}%
+
+CCProgram unlit-vs %{
+  #include "UnlitVert"
+}%
+
+CCProgram unlit-fs %{
+  #include "UnlitFrag"
+}%

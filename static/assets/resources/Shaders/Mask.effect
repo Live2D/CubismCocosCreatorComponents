@@ -1,0 +1,29 @@
+CCEffect %{
+  techniques:
+  - name: base
+    passes:
+    - vert: unlit-vs:vert
+      frag: unlit-fs:frag
+      depthStencilState:
+        depthTest: true
+        depthWrite: false
+      blendState: &alphablend
+        targets:
+        - blend: true
+          blendSrc: one
+          blendDst: one
+          blendSrcAlpha: one
+          blendDstAlpha: one
+      properties:
+        mainTexture:                { value: white }
+        cubism_internal_tile:       { value: [0, 0, 0, 0], target: cubism_MaskTile }
+        cubism_internal_transform:  { value: [0, 0, 0, 0], target: cubism_MaskTransform }
+}%
+
+CCProgram unlit-vs %{
+  #include "MaskVert"
+}%
+
+CCProgram unlit-fs %{
+  #include "MaskFrag"
+}%

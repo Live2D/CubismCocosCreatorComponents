@@ -1,0 +1,4 @@
+float CubismSampleMaskTexture(sampler2D tex, vec4 channel, vec2 coordinates) {
+  vec4 texel = texture(tex, coordinates) * channel;
+  return texel.r + texel.g + texel.b + texel.a;
+}

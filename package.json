@@ -1,0 +1,118 @@
+{
+  "package_version": 2,
+  "version": "0.0.1-alpha.1",
+  "name": "live2d_cubismsdk_cocoscreator",
+  "description": "i18n:live2d_cubismsdk_cocoscreator.description",
+  "main": "./dist/main.js",
+  "devDependencies": {
+    "@types/emscripten": "^1.39.6",
+    "@types/node": "^16.0.1",
+    "typescript": "^4.7.4"
+  },
+  "author": "Live2D Inc.",
+  "editor": ">=3.6.2",
+  "scripts": {
+    "build": "tsc -b",
+    "watch": "tsc -w"
+  },
+  "contributions": {
+    "asset-db": {
+      "importer": {
+        "script": "./dist/Importers/index.js",
+        "list": [
+          "registerCubismMocImporter",
+          "registerCubismModel3JsonImporter",
+          "registerCubismExp3JsonImporter",
+          "registerCubismMotion3JsonImporter",
+          "registerCubismExpressionDataImporter",
+          "registerCubismExpressionListImporter",
+          "registerCubismFadeMotionDataImporter",
+          "registerCubismFadeMotionListImporter",
+          "registerCubismMaskTextureImporter"
+        ]
+      },
+      "mount": {
+        "path": "./static/assets"
+      }
+    },
+    "inspector": {
+      "section": {
+        "node": {
+          "CubismParametersInspector": "./dist/Inspectors/Components/CubismParametersInspector.js",
+          "CubismPartsInspector": "./dist/Inspectors/Components/CubismPartsInspector.js",
+          "CubismRenderController": "./dist/Inspectors/Components/CubismRenderController.js",
+          "CubismRenderer": "./dist/Inspectors/Components/CubismRenderer.js",
+          "CubismLookController": "./dist/Inspectors/Components/CubismLookController.js",
+          "CubismUserDataTag": "./dist/Inspectors/Components/CubismUserDataTag.js"
+        },
+        "asset": {
+          "exp3.json": "./dist/Inspectors/Assets/CubismExpressionData.js",
+          "exp3.asset": "./dist/Inspectors/Assets/CubismExpressionData.js",
+          "expressionList.asset": "./dist/Inspectors/Assets/CubismExpressionList.js",
+          "fade.asset": "./dist/Inspectors/Assets/CubismFadeMotionData.js",
+          "fadeMotionList.asset": "./dist/Inspectors/Assets/CubismFadeMotionList.js",
+          "asset": "./dist/Inspectors/Assets/CubismMaskTexture.js"
+        }
+      }
+    },
+    "menu": [
+      {
+        "path": "i18n:live2d_cubismsdk_cocoscreator.live2d/i18n:live2d_cubismsdk_cocoscreator.cubism/i18n:live2d_cubismsdk_cocoscreator.original_workflow",
+        "label": "i18n:live2d_cubismsdk_cocoscreator.should_import_as_original_workflow",
+        "message": "showShouldImportAsOriginalWorkflowSettingDialog"
+      },
+      {
+        "path": "i18n:live2d_cubismsdk_cocoscreator.live2d/i18n:live2d_cubismsdk_cocoscreator.cubism/i18n:live2d_cubismsdk_cocoscreator.original_workflow",
+        "label": "i18n:live2d_cubismsdk_cocoscreator.should_clear_animation_curves",
+        "message": "showShouldClearAnimationCurvesSettingDialog"
+      }
+    ],
+    "messages": {
+      "getShouldImportAsOriginalWorkflow": {
+        "public": true,
+        "description": "getShouldImportAsOriginalWorkflow",
+        "methods": [
+          "getShouldImportAsOriginalWorkflow"
+        ]
+      },
+      "setShouldImportAsOriginalWorkflow": {
+        "public": true,
+        "description": "setShouldImportAsOriginalWorkflow",
+        "methods": [
+          "setShouldImportAsOriginalWorkflow"
+        ]
+      },
+      "showShouldImportAsOriginalWorkflowSettingDialog": {
+        "public": true,
+        "description": "showShouldImportAsOriginalWorkflowSettingDialog",
+        "methods": [
+          "showShouldImportAsOriginalWorkflowSettingDialog"
+        ]
+      },
+      "getShouldClearAnimationCurves": {
+        "public": true,
+        "description": "getShouldClearAnimationCurves",
+        "methods": [
+          "getShouldClearAnimationCurves"
+        ]
+      },
+      "setShouldClearAnimationCurves": {
+        "public": true,
+        "description": "setShouldClearAnimationCurves",
+        "methods": [
+          "setShouldClearAnimationCurves"
+        ]
+      },
+      "showShouldClearAnimationCurvesSettingDialog": {
+        "public": true,
+        "description": "showShouldClearAnimationCurvesSettingDialog",
+        "methods": [
+          "showShouldClearAnimationCurvesSettingDialog"
+        ]
+      }
+    },
+    "scene": {
+      "script": "./dist/SceneScript.js"
+    }
+  }
+}

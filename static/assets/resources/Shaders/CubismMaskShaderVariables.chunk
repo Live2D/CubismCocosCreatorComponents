@@ -1,0 +1,4 @@
+uniform masked {
+  vec4 cubism_MaskTile;
+  vec4 cubism_MaskTransform;
+};

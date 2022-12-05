@@ -1,0 +1,12 @@
+#include "CubismToMaskCoordinates"
+
+vec4 CubismToMaskClipPos(vec2 vertex, vec4 tile, vec4 transform) {
+  tile = vec4(tile.xyz, tile.w * 2.0); // 原因は不明だが w * 2.0 しないと Unity の物と結果が異なり左下1/4表示のような結果になる。
+  vec2 result = CubismToMaskCoordinates(vertex, tile, transform);
+
+  result * 2.0;
+  result.xy -= vec2(1.0, 1.0);
+
+  // for Unity では z は 1 だが カメラ で Clip されてしまうので 0 に変更
+  return vec4(result, 0.0, 1.0);
+}

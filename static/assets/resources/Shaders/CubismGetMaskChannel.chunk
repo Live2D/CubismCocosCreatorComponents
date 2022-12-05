@@ -1,0 +1,4 @@
+vec4 CubismGetMaskChannel(vec4 tile) {
+  float x = tile.x;
+  return vec4(x == 0.0, x == 1.0, x == 2.0, x == 3.0);
+}

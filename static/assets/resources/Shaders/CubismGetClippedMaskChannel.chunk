@@ -1,0 +1,10 @@
+#include "CubismGetMaskChannel"
+vec4 CubismGetClippedMaskChannel(vec2 coordinates, vec4 tile) {
+  vec2 bound = tile.yz * tile.w;
+  float isInside =
+    step(bound.x, coordinates.x)
+    * step(bound.y, coordinates.y)
+    * step(coordinates.x, bound.x + tile.w)
+    * step(coordinates.y, bound.y + tile.w);
+  return CubismGetMaskChannel(tile) * isInside;
+}

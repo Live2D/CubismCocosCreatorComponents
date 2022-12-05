@@ -1,0 +1,8 @@
+# Node JS modules
+/node_modules
+
+# Generated code
+/dist
+static/lib/
+
+*.tsbuildinfo

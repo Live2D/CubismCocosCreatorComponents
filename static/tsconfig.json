@@ -1,0 +1,28 @@
+{
+  "extends": "../../../temp/tsconfig.cocos.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "ES2017",
+
+    // Setup the declaration generation so importers can reference modules under static/
+    "declaration": true,
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "rootDir": "./",
+    "outDir": "./lib",
+    "composite": true,
+
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": [
+      "node",
+      "../../../temp/declarations/jsb",
+      "../../../temp/declarations/cc.custom-macro",
+      "../../../temp/declarations/cc",
+      "../../../temp/declarations/cc.env",
+      "../@types/editor",
+      "../@types/cc"
+    ]
+  },
+  "include": ["assets", "CubismCoreWasm"]
+}

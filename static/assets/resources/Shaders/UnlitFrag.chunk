@@ -1,0 +1,50 @@
+precision highp float;
+#include "CubismGetClippedMaskChannel"
+#include "CubismSampleMaskTexture"
+
+in vec4 v2f_color;
+in vec2 v2f_texCoord;
+uniform sampler2D mainTexture;
+
+uniform Constant {
+  vec4 multiplyColor;
+  vec4 screenColor;
+};
+
+#if USED_MASK
+//CUBISM_VERTEX_OUTPUT
+in vec2 cubismMaskTexCoord;
+uniform sampler2D cubism_MaskTexture;
+
+#include "CubismMaskShaderVariables"
+#endif
+
+uniform opacity {
+  float cubism_ModelOpacity;
+};
+
+vec4 frag() {
+  vec4 color = texture(mainTexture, v2f_texCoord) * v2f_color;
+  // CUBISM_APPLY_ALPHA(IN, COLOR)
+  
+  //乗算・スクリーン色
+  color.rgb *= multiplyColor.rgb;
+  vec3 one = vec3(1.0,1.0,1.0);
+  color.rgb = one - (one - color.rgb) * (one - screenColor.rgb);
+
+  color.rgb *= color.a;
+
+#if USED_MASK
+  // CUBISM_APPLY_MASK(IN, COLOR);
+  vec4 cubism_maskChannel = CubismGetClippedMaskChannel(cubismMaskTexCoord, cubism_MaskTile);
+  float cubism_maskAlpha = CubismSampleMaskTexture(cubism_MaskTexture, cubism_maskChannel, cubismMaskTexCoord);
+#if CUBISM_INVERT
+  color *= 1.0 - cubism_maskAlpha;
+#else
+  color *= cubism_maskAlpha;
+#endif
+#endif
+  color *= cubism_ModelOpacity;
+  
+  return color;
+}

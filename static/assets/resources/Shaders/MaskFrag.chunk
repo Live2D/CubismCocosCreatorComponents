@@ -1,0 +1,11 @@
+precision highp float;
+#include "CubismGetMaskChannel"
+#include "CubismMaskShaderVariables"
+
+in vec2 v2f_texCoord;
+
+uniform sampler2D mainTexture;
+
+vec4 frag() {
+  return CubismGetMaskChannel(cubism_MaskTile) * texture(mainTexture, vec2(v2f_texCoord.x, -v2f_texCoord.y)).a;
+}

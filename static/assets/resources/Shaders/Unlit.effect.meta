@@ -1,0 +1,38 @@
+{
+  "ver": "1.6.0",
+  "importer": "effect",
+  "imported": true,
+  "uuid": "2e3720c8-f118-4e51-914c-1cd3fc642d4b",
+  "files": [
+    ".json"
+  ],
+  "subMetas": {},
+  "userData": {
+    "combinations": [
+      {
+        "CUBISM_INVERT_ON": [
+          true,
+          false
+        ]
+      },
+      {
+        "USE_INSTANCING": [
+          false
+        ],
+        "USE_LIGHTMAP": [
+          false
+        ],
+        "USE_BATCHING": [
+          false
+        ],
+        "CUBISM_INVERT": [
+          0
+        ],
+        "USED_MASK": [
+          0,
+          1
+        ]
+      }
+    ]
+  }
+}
