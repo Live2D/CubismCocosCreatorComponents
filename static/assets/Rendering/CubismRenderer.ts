@@ -205,7 +205,7 @@ export default class CubismRenderer extends Component {
 
   //#region Material
   /** Material. */
-  @property({ type: Material, visible: true })
+  // @property({ type: Material, visible: true })
   public get material(): Material | null {
     return this.meshRenderer?.material ?? null;
   }
