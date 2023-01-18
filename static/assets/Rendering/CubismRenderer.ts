@@ -241,7 +241,7 @@ export default class CubismRenderer extends Component {
   //#endregion
 
   //#region Meshes
-  @property({ serializable: false, visible: false })
+  // @property({ serializable: false, visible: false })
   private _meshes: [CubismMeshPrimitive, CubismMeshPrimitive] = [
     CubismMeshPrimitive.makeEmpty(),
     CubismMeshPrimitive.makeEmpty(),
@@ -260,7 +260,7 @@ export default class CubismRenderer extends Component {
   //#endregion
 
   //#region FrontMesh
-  @property({ serializable: false, visible: false })
+  // @property({ serializable: false, visible: false })
   private _frontMesh: number = 0;
   /** Index of front buffer mesh. */
   private get frontMesh() {
@@ -272,7 +272,7 @@ export default class CubismRenderer extends Component {
   //#endregion
 
   //#region BackMesh
-  @property({ serializable: false, visible: false })
+  // @property({ serializable: false, visible: false })
   private _backMesh: number = 0;
   /** Index of back buffer mesh. */
   private get backMesh() {
@@ -293,7 +293,7 @@ export default class CubismRenderer extends Component {
 
   //#region MeshRenderer
   /** MeshRenderer backing field. */
-  @property({ serializable: false, visible: false })
+  // @property({ serializable: false, visible: false })
   private _meshRenderer: MeshRenderer | null = null;
   public get meshRenderer(): MeshRenderer | null {
     return this._meshRenderer;
@@ -408,7 +408,7 @@ export default class CubismRenderer extends Component {
   //#endregion
 
   //#region LastSwap
-  @property({ serializable: false, visible: false })
+  // @property({ serializable: false, visible: false })
   private _lastSwap: SwapInfo = SwapInfo.DEFAULT;
   /** Allows tracking of what vertex data was updated last swap. */
   private get lastSwap() {
@@ -420,7 +420,7 @@ export default class CubismRenderer extends Component {
   //#endregion
 
   //#region ThisSwap
-  @property({ serializable: false, visible: false })
+  // @property({ serializable: false, visible: false })
   private _thisSwap: SwapInfo = SwapInfo.DEFAULT;
   /** Allows tracking of what vertex data will be swapped. */
   private get thisSwap() {
