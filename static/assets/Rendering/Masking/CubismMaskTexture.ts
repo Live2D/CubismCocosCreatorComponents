@@ -311,10 +311,17 @@ export default class CubismMaskTexture extends Asset implements ICubismMaskComma
   }
   // #endregion
 
-  private constructor(size: number, subdivisions: number) {
+  private constructor(size?: number, subdivisions?: number) {
     super();
-    this._size = size;
-    this._subdivisions = subdivisions;
+    // Parameters cannot be given during deserialization, so none of the parameters in the constructor may be present
+    // The build process removes the same data as the default value.
+    // So if no parameters are passed in and no data is restored, the default values on the class are used
+    if (size !== undefined) {
+      this._size = size;
+    }
+    if (subdivisions !== undefined) {
+      this._subdivisions = subdivisions;
+    }
   }
 
   public static generateCubismMaskTexture(
