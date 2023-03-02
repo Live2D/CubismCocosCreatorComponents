@@ -199,7 +199,14 @@ declare module '@editor/asset-db' {
      */
     isDirectory(): boolean;
     /**
-     * 创建一个虚拟的 asset，这个 asset 没有实体
+     * 设置一个资源上的附加数据
+     * @param key
+     * @param data
+     */
+    setData(key: string, data: any): void;
+    /**
+     * 创建一个虚拟的 asset，这个 a
+     * sset 没有实体
      * 一个虚拟的 asset 也允许存储都个文件
      * @param name
      * @param importer 使用什么解析

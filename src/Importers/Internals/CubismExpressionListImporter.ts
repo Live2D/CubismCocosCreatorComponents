@@ -78,6 +78,9 @@ export default class CubismExpressionListImporter extends Importer {
     }
     const list = new CubismExpressionList();
     list.cubismExpressionObjects = cubismExpressionObjects;
+    // Mark dependent resources
+    // Because the data format of each resource is different, you need to manually mark the dependencies
+    asset.setData && asset.setData('depends', expDataUuids);
     await asset.saveToLibrary('.json', EditorExtends.serialize(list));
     return true;
   }
