@@ -77,6 +77,9 @@ export default class CubismFadeMotionListImporter extends Importer {
     const list = new CubismFadeMotionList();
     list.cubismFadeMotionObjects = cubismFadeMotionObjects;
     list.motionInstanceIds = Array.from(sList.motionInstanceIds);
+    // Mark dependent resources
+    // Because the data format of each resource is different, you need to manually mark the dependencies
+    asset.setData && asset.setData('depends', sList.cubismFadeMotionObjects);
 
     await asset.saveToLibrary('.json', EditorExtends.serialize(list));
     return true;

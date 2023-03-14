@@ -19,6 +19,15 @@ export default class CubismMoc extends Asset {
   // #region Factory Methods
 
   /**
+   * Checks consistency of a moc.
+   * @param mocByte Source.
+   * @returns `true` if Moc is valid; `false` otherwise.
+   */
+  public hasMocConsistency(mocByte: ArrayBuffer): boolean {
+    return Moc.hasMocConsistency(mocByte) === 1 ? true : false;
+  }
+
+  /**
    * Creates a CubismMoc asset from raw bytes.
    * @param moc3 Source.
    * @returns Instance.

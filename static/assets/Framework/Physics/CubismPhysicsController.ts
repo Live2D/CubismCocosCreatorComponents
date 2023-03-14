@@ -13,6 +13,8 @@ import CubismPhysicsRig from './CubismPhysicsRig';
 import ComponentExtensionMethods from '../../Core/ComponentExtensionMethods';
 import ICubismUpdatable from '../ICubismUpdatable';
 import type CubismParameter from '../../Core/CubismParameter';
+import CubismRenderController from '../../Rendering/CubismRenderController';
+import CubismMaskController from '../../Rendering/Masking/CubismMaskController';
 const { ccclass, property } = _decorator;
 
 @ccclass('CubismPhysicsController')
@@ -63,6 +65,23 @@ export default class CubismPhysicsController extends Component implements ICubis
 
     // Evaluate rig.
     this.rig?.evaluate(_deltaTime);
+  }
+
+  /** Calculate until the physics is stable and update the model information. */
+  public stabilization(): void {
+    if (this.rig == null) {
+      return;
+    }
+
+    this.rig.stabilization();
+
+    const renderController = this.getComponent(CubismRenderController);
+    const maskController = this.getComponent(CubismMaskController);
+
+    console.assert(renderController != null);
+
+    renderController?.onLateUpdate();
+    maskController?.onLateUpdate();
   }
 
   /** ICubismUpdatable Binded callback function. */

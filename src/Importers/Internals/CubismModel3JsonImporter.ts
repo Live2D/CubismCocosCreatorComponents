@@ -180,8 +180,10 @@ export default class CubismModel3JsonImporter extends Importer {
     const CubismExpressionList = (
       await ProjectModules.getModule('Framework/Expression/CubismExpressionList')
     ).default;
-    // @ts-ignore
-    const provisionalExpList = EditorExtends.serialize.asAsset(expListUuid, CubismExpressionList);
+    const provisionalExpList = Editor.Utils.UUID.isUUID(expListUuid)
+      ? // @ts-ignore
+        EditorExtends.serialize.asAsset(expListUuid, CubismExpressionList)
+      : null;
     //#endregion
 
     //#region Generate model

@@ -4,28 +4,7 @@
 
 # Notices
 
-## [Alpha version limitations]
-
-## Motion and MotionFade components
-
-Currently, the motion playback and fade functions only support animation playback using Cocos Creator's Animation and AnimationClip, and there is no function to play and fade an animation separately from the one currently playing.
-
-There is no function to playback animation without Animation and AnimationClip.
-
-### Future actions
-
-We plan to implement alternative functions in the beta version or later.
-
-
-## Playback animation using AnimationGraph
-
-Animation transitions and playback using AnimationGraph and AnimationClip converted from .motion3.json are not supported.
-
-### Future actions
-
-This is a specification for Cocos Creator 3.
-Support has not yet been determined.
-
+## [Limitations]
 
 ## Drawing masks
 
@@ -43,26 +22,36 @@ Make sure to re-import [GlobalMaskTexture.asset] using [Reimport Asset] and rest
 In Cocos Creator, go to [Project]-[Project Settings]-[Layers] and give `User Layer 19` a name of your choice (e.g. MASK) and uncheck `Visibility` in the scene's Main Camera.
 For details, please refer to the manual [Notes specific to Cocos Creator version].
 
+## Add AnimationClip(State) to AnimationGraph (Added: 2023-03-14)
 
-## Scene View
+Currently, due to a limitation in Cocos Creator, it is not possible to add an AnimationClip set State to an AnimationGraph by drag and drop.
 
-An error occurs when Undo is executed after the model is displayed in scene view and any drawable coordinates are moved.
-This error does not occur when moving the coordinates of the entire model.
+### Workaround
 
-### Future actions
-
-We plan to fix this issue in the next alpha release. Please wait for the next release.
+Right-click on the AnimationGraph edit screen, create a State, and then set the AnimationClip in the Inspector.
 
 
-## Exporting apps
+## Expression scene (Added: 2023-03-14)
 
-Application export (Build) failed with an error and the application cannot be exported.
+After installing Cubism SDK for Cocos Creator, opening and building an Expression scene may not execute correctly.
 
-### Future actions
+### Workaround
 
-We are planning to fix this issue for Web Desktop in the next alpha release. Please wait for our response.
-Major export destinations (Windows, Android, Web Mobile, etc.) will be supported in the beta version or later.
-Other export destinations are under consideration.
+Reimport the `Model\Natori\exp` folder and run the build.
+* You may get an error when you Reimport, but the scene will run correctly.
+
+
+## Exporting applications (Updated: 2023-03-14)
+
+Cubism SDK for Cocos Creator R1 beta1 does not export to the following platforms.
+
+* Windows
+* Android
+
+### Future
+
+We will address this issue in the next and subsequent updates.
+
 
 ---
 

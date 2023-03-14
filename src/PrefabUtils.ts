@@ -4,7 +4,14 @@
  * Use of this source code is governed by the Live2D Open Software license
  * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
  */
+import type { Node, Component } from 'cc';
+const { Path } = Editor.Utils;
+module.paths.push(Path.join(Editor.App.path, 'node_modules'));
 
+interface IAddPrefabInfoOption {
+  nodeFileIdGenerator?: (node: Node) => string;
+  compFileIdGenerator?: (comp: Component, index: number) => string;
+}
 function getCompressedUuid(name: any) {
   const { v5 } = require('uuid');
   // Generate a UUID with the same name
@@ -15,19 +22,23 @@ function getCompressedUuid(name: any) {
   return uuid;
 }
 
-function nodeFileldGenerator(node: any) {
+function nodeFileIdGenerator(node: Node) {
   const nodePath = getNodePath(node);
   const nodeFileld = getCompressedUuid(nodePath);
   return nodeFileld;
 }
 
-function compFileldGenerator(comp: any, index: any) {
+function compFileIdGenerator(comp: Component, index: number) {
   const nodePath = getNodePath(comp.node);
   const compPath = nodePath + '/comp' + index;
   const compFileld = getCompressedUuid(compPath);
   return compFileld;
 }
 
+const addPrefabInfoOption: IAddPrefabInfoOption = {
+  nodeFileIdGenerator,
+  compFileIdGenerator,
+}
 function getNodePath(node: any) {
   let nodePath = '';
   // Use node paths to generate fileIDS
@@ -52,10 +63,7 @@ export function generatePrefab(node: any) {
 
   // The node path is used to generate the Fileld, which prevents a different Fileld from being generated after each GLTF redirect
   // @ts-ignore
-  EditorExtends.PrefabUtils.addPrefabInfo(node, node, prefab, {
-    nodeFileldGenerator,
-    compFileldGenerator,
-  });
+  EditorExtends.PrefabUtils.addPrefabInfo(node, node, prefab, addPrefabInfoOption);
   // ↑ここで EditorExtends.PrefabUtils.addPrefabInfo is not a function at Object.generatePrefab [as generate]
 
   // @ts-ignore

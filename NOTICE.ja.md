@@ -5,28 +5,7 @@
 
 # Notices
 
-# [alpha版制限事項]
-
-## Motion 及び MotionFade コンポーネント
-
-現在モーション再生機能及びフェード機能において、Cocos CreatorのAnimationとAnimationClipを使用したアニメーション再生のみに対応し、再生中のアニメーションに別にアニメーションを再生させてフェードするような機能はございません。
-
-また、 AnimationとAnimationClip を用いずにアニメーションを再生するための機能もございません。
-
-### 今後について
-
-beta版以降にて代替の機能を実装する予定です。
-
-
-## AnimationGraphを使用したアニメーション再生
-
-AnimationGraphと.motion3.jsonから変換されたAnimationClipを用いたアニメーション遷移や再生には対応しておりません。
-
-### 今後について
-
-Cocos Creator 3 の仕様となります。
-対応についても未定となります。
-
+# [制限事項]
 
 ## マスクの描画
 
@@ -45,27 +24,35 @@ Cocos Creatorの [Project]-[Project Settings]-[Layers]にございます`User La
 詳しくはマニュアル [Cocos Creator版特有の注意点] をご確認ください。
 
 
-## シーンビュー
+## AnimationGraph に AnimationClip(State) を追加する (2023-03-14追加)
 
-シーンビューにてモデルを表示し、任意のDrawable座標を動かしたあとにUndoを実行するとエラーが発生します。
-モデル全体の座標を動かす場合は発生いたしません。
+現在、Cocos Creator の制限により AnimationGraph に ドラッグ＆ドロップによって AnimationClip 設定済み State を追加できません。
+
+### 対応策
+
+AnimationGraph 編集画面を右クリックして State を作成後 Inspector より AnimationClip を設定して下さい。
+
+
+## Expression シーン (2023-03-14追加)
+
+Cubism SDK for Cocos Creator の導入作業後にExpressionシーンを開いてビルド実行すると、正しく実行できない場合があります。
+
+### 対応策
+
+`Model\Natori\exp` フォルダをReimportしてから実行してください。
+* Reimportした際にエラーが出る場合がありますが、シーンは正しく実行できるようになります。
+
+
+## アプリ書き出し (2023-03-14更新)
+
+Cubism SDK for Cocos Creator R1 beta1 にて以下プラットフォーム書き出しができない現象がございます。
+
+* Windows
+* Android
 
 ### 今後について
 
-次回以降のalpha版リリースにて修正を予定しております。対応をお待ちください。
-
-
-## アプリ書き出し
-
-アプリ書き出し(Build)において、エラーが発生しアプリ書き出しがおこなえません。
-
-### 今後について
-
-次回以降のalpha版リリースにてWeb Desktopに対して修正を予定しております。対応をお待ちください。
-また、beta版以降にて主要な書き出し先(Windows,Android,Web Mobileなど)に対応予定です。
-その他の書き出し先については検討中となります。
-
-
+次回以降の更新にて順次対応いたします。
 
 ---
 

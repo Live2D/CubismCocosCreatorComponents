@@ -9,6 +9,7 @@ import { _decorator } from 'cc';
 import ICubismUpdatable from './ICubismUpdatable';
 
 namespace CubismUpdateExecutionOrder {
+  export const CUBISM_MOTION_APPLIER = 50;
   export const CUBISM_FADE_CONTROLLER = 100;
   export const CUBISM_PARAMETER_STORE_SAVE_PARAMETERS = 150;
   export const CUBISM_POSE_CONTROLLER = 200;

@@ -48,11 +48,11 @@ Cocos Creator Editor扩展功能可以在`./src`找到。
 
 | Cocos Creator | 版本 |
 | --- | --- |
-| 最新的 | v3.6.2 |
+| 最新的 | v3.7.1 |
 
 |工具 |版本 |
 | --- | --- |
-| Node.js | v18.12.1 |
+| Node.js | v19.1.0 |
 
 
 ##关于动作确认
@@ -108,8 +108,8 @@ CocosCreatorProject # Cocos Creator 中创建的项目
 - [Live2D GitHub](https://github.com/Live2D)
 
 ## 手册和教程
-- [教程](doc/tutorials/CubismSdkForCocosCreator_Tutorial_4-r.1-alpha.1_en.pdf)
-- [手册](doc/manuals/CubismSdkForCocosCreator_Manual_4-r.1-alpha.1_en.pdf)
+- [教程](https://docs.live2d.com/zh-CHS/cubism-sdk-tutorials/top/)
+- [手册](https://docs.live2d.com/zh-CHS/cubism-sdk-manual/top/)
 
 今后将增加中文的手册和教程。
 

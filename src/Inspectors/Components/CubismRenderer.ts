@@ -31,9 +31,10 @@ export async function update(this: IPanelThis, dump: IInputDump<ICubismRenderer>
   helper.color();
   helper.multiplyColor();
   helper.screenColor();
-  helper.material();
+  // helper.material();
   helper.mainTexture();
   helper.localOrder();
+  helper.priority();
 
   const oSection = root.getElementById('main');
   if (oSection) {
@@ -151,23 +152,23 @@ class UI extends InspectorComponentGuiHelper {
     this.parent.appendChild(prop);
   }
 
-  public material() {
-    const { material, node } = this.values;
-    const prop = this.createPropBase('Material');
-    const content = this.create(TagName.UI_ASSET);
-    content.slot = 'content';
-    content.droppable = 'cc.Material';
-    content.value = material.value.uuid;
-    content.addEventListener('confirm', async (_event) => {
-      await setProperty(node.value.uuid, material.path, {
-        value: { uuid: content.value ?? '' },
-        type: material.type,
-      });
-    });
+  // public material() {
+  //   const { material, node } = this.values;
+  //   const prop = this.createPropBase('Material');
+  //   const content = this.create(TagName.UI_ASSET);
+  //   content.slot = 'content';
+  //   content.droppable = 'cc.Material';
+  //   content.value = material.value.uuid;
+  //   content.addEventListener('confirm', async (_event) => {
+  //     await setProperty(node.value.uuid, material.path, {
+  //       value: { uuid: content.value ?? '' },
+  //       type: material.type,
+  //     });
+  //   });
 
-    prop.appendChild(content);
-    this.parent.appendChild(prop);
-  }
+  //   prop.appendChild(content);
+  //   this.parent.appendChild(prop);
+  // }
 
   public mainTexture() {
     const { mainTexture, node } = this.values;
@@ -202,6 +203,20 @@ class UI extends InspectorComponentGuiHelper {
         type: localSortingOrder.type,
       });
     });
+    prop.appendChild(content);
+    this.parent.appendChild(prop);
+  }
+
+  public priority() {
+    const { _priorityInEditor, node } = this.values;
+    const prop = this.createPropBase('Priority');
+    const content = this.create(TagName.UI_NUM_INPUT);
+    content.slot = 'content';
+    content.preci = 7;
+    content.step = 0.000001;
+    content.min = Number.MIN_SAFE_INTEGER;
+    content.max = Number.MAX_SAFE_INTEGER;
+    content.value = _priorityInEditor.value;
     prop.appendChild(content);
     this.parent.appendChild(prop);
   }

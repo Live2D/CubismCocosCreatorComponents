@@ -27,7 +27,9 @@
         "scale": 1,
         "top": -1,
         "left": 0
-      }
+      },
+      "id": "16782666766780.4398045699862163",
+      "clone": null
     },
     "_states": [
       {
@@ -63,16 +65,31 @@
     "__editorExtras__": {
       "centerX": -175,
       "centerY": -6,
-      "id": "16690308419830.6027332321558583"
+      "id": "16690308419830.6027332321558583",
+      "clone": null
     },
     "name": "Entry"
   },
   {
     "__type__": "cc.animation.State",
+    "__editorExtras__": {
+      "name": "",
+      "id": "16782666766780.008659186977953759",
+      "clone": null,
+      "centerX": 125,
+      "centerY": 0
+    },
     "name": "Exit"
   },
   {
     "__type__": "cc.animation.State",
+    "__editorExtras__": {
+      "name": "",
+      "id": "16782666766780.09047167260981448",
+      "clone": null,
+      "centerX": 125,
+      "centerY": 0
+    },
     "name": "Any"
   },
   {
@@ -80,7 +97,8 @@
     "__editorExtras__": {
       "centerX": -13.703125,
       "centerY": -38,
-      "id": "16690308594480.11495243212858064"
+      "id": "16690308594480.11495243212858064",
+      "clone": null
     },
     "name": "body",
     "_components": [],
@@ -97,15 +115,21 @@
       "id": "16690308594470.7188967032698088",
       "centerX": 0,
       "centerY": 0,
-      "name": ""
+      "name": "",
+      "clone": null
     },
     "clip": {
-      "__uuid__": "77377827-04a8-442d-a088-5423bd611771",
+      "__uuid__": "8e658bf0-6ec2-444d-96f0-562ae62dcd24",
       "__expectedType__": "cc.AnimationClip"
     }
   },
   {
     "__type__": "cc.animation.Transition",
+    "__editorExtras__": {
+      "name": "",
+      "id": "16782666766780.15589716423472422",
+      "clone": null
+    },
     "from": {
       "__id__": 3
     },

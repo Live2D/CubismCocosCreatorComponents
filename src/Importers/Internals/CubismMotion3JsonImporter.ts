@@ -14,7 +14,6 @@ import { Asset, Importer, refresh, VirtualAsset } from '@editor/asset-db';
 import { ProjectModules } from '../../ProjectModules';
 import CubismSDKSettings from '../../CubismSDKSettings';
 import CubismFadeMotionDataImporter from './CubismFadeMotionDataImporter';
-import { registerImportTaskIfItCannotBeCoreInitialized } from './Utils';
 import CubismModel3JsonImporter from './CubismModel3JsonImporter';
 import { AnimationClip, Asset as CCAsset } from 'cc';
 
@@ -28,7 +27,7 @@ export default class CubismMotion3JsonImporter extends Importer {
     return 'motion3.json';
   }
   public get assetType() {
-    return 'AnimationClip';
+    return 'undefined';
   }
 
   public async validate(asset: VirtualAsset | Asset) {
@@ -36,19 +35,15 @@ export default class CubismMotion3JsonImporter extends Importer {
     if (asset.isDirectory()) {
       return false;
     }
-    if (ext != Path.extname(Path.basenameNoExt(asset.source))) {
-      return false;
-    }
-    return true;
-  }
-
-  public async import(asset: VirtualAsset | Asset): Promise<boolean> {
-    if (!(await registerImportTaskIfItCannotBeCoreInitialized(asset.source))) {
-      return false;
-    }
 
     const baseDir = Path.dirname(asset.source);
-    const name = Path.basenameNoExt(Path.basenameNoExt(asset.source));
+    const basenameExt = Path.basenameNoExt(asset.source);
+    const basename = Path.basenameNoExt(basenameExt);
+    const secondExt = Path.extname(basenameExt);
+
+    if (ext != secondExt) {
+      return false;
+    }
 
     const { default: CubismMotion3Json } = await ProjectModules.getModule(
       'Framework/Json/CubismMotion3Json'
@@ -68,8 +63,11 @@ export default class CubismMotion3JsonImporter extends Importer {
       return false;
     }
 
-    const clipFilePath = Path.join(baseDir, name + '.anim');
-    const cfmdFilePath = Path.join(baseDir, name + `.${CubismFadeMotionDataImporter.extension}`);
+    const clipFilePath = Path.join(baseDir, basename + '.anim');
+    const cfmdFilePath = Path.join(
+      baseDir,
+      basename + `.${CubismFadeMotionDataImporter.extension}`
+    );
 
     const isCubismModelImport = CubismModel3JsonImporter.getMotionImportFlag(asset.source);
 
@@ -103,6 +101,12 @@ export default class CubismMotion3JsonImporter extends Importer {
     if (isCubismModelImport) {
       CubismModel3JsonImporter.clearMotionImportFlag(asset.source);
     }
-    return true;
+
+    return false;
+  }
+
+  public async import(asset: VirtualAsset | Asset): Promise<boolean> {
+    // JsonAssetとしてインポートする都合上、常に validate が false を返すため実行されない。
+    return false;
   }
 }

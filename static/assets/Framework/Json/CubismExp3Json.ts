@@ -69,8 +69,8 @@ export default class CubismExp3Json {
     const result = new CubismExp3Json();
     result.type = type;
     result.parameters = parameters;
-    result.fadeInTime = fadeInTime ?? 0;
-    result.fadeOutTime = fadeOutTime ?? 0;
+    result.fadeInTime = fadeInTime ?? 1.0;
+    result.fadeOutTime = fadeOutTime ?? 1.0;
     return result;
   }
 

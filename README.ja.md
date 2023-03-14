@@ -47,11 +47,11 @@ CubismファイルをプレハブとAnimationClipに変換するのはここで�
 
 | Cocos Creator | バージョン |
 | --- | --- |
-| latest | v3.6.2 |
+| latest | v3.7.1 |
 
 | ツール | バージョン |
 | --- | --- |
-| Node.js | v18.12.1 |
+| Node.js | v19.1.0 |
 
 
 ## 動作確認について
@@ -109,8 +109,8 @@ CocosCreatorProject # Cocos Creator で作成したプロジェクト
 - [Live2D GitHub](https://github.com/Live2D)
 
 ## マニュアル・チュートリアル
-- [チュートリアル](doc/tutorials/CubismSdkForCocosCreator_Tutorial_4-r.1-alpha.1_ja.pdf)
-- [マニュアル](doc/manuals/CubismSdkForCocosCreator_Manual_4-r.1-alpha.1_ja.pdf)
+- [チュートリアル](https://docs.live2d.com/cubism-sdk-tutorials/top/)
+- [マニュアル](https://docs.live2d.com/cubism-sdk-manual/top/)
 
 ## コミュニティ
 - [Live2D 公式コミュニティ](https://creatorsforum.live2d.com/)

@@ -222,7 +222,8 @@ class CubismModel3Json {
 
   /** The file references. */
   @property({ serializable: true })
-  public fileReferences: CubismModel3Json.SerializableFileReferences = new CubismModel3Json.SerializableFileReferences();
+  public fileReferences: CubismModel3Json.SerializableFileReferences =
+    new CubismModel3Json.SerializableFileReferences();
 
   /** Groups. */
   @property({ serializable: true })
@@ -1165,9 +1166,7 @@ export namespace CubismModelNodeGenerator {
     }
 
     // Load from cdi3.json
-    if (args.displayInfo3Json != null) {
-      Internal.setupFromDisplayInfo3Json(args.displayInfo3Json, model, model3);
-    }
+    Internal.setupFromDisplayInfo3Json(args.displayInfo3Json ?? null, model, model3);
 
     // Add mask controller if required.
     Internal.setupMaskController(model, drawables);
@@ -1259,8 +1258,9 @@ namespace Internal {
       }
     }
   }
+
   export function setupFromDisplayInfo3Json(
-    json: object,
+    json: object | null,
     model: Readonly<CubismModel>,
     model3: Readonly<CubismModel3Json>
   ) {

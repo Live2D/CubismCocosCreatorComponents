@@ -4,29 +4,7 @@
 
 # Notices
 
-## [alpha版的限制事项]
-
-### 关于Motion和MotionFade组件
-
-关于动作（Motion）播放和渐变（Fade）功能，目前只支持使用Cocos Creator中的Animation和AnimationClip播放的动画，另外，暂时没有功能可支持在当前播放的动画上，播放和淡入淡出其他动画。
-
-另外，不使用Animation和AnimationClip的情况下播放动画的功能也仍未实装。
-
-
-#### 关于今后的展开
-
-预定在beta版以后实装替代的功能。
-
-
-## 使用AnimationGraph播放动画
-
-不支持使用从.motion3.json转换的AnimationGraph和AnimationClip的动画过渡和播放。
-
-### 关于今后的展开
-
-目前版本为Cocos Creator 3规格。
-关于今后的规格仍然未定。
-
+## [限制事项]
 
 ## 蒙版绘制
 
@@ -47,25 +25,35 @@ Cocos Creator的 [Project]-[Project Settings]-[Layers]中，为`User Layer 19`�
 详细请查阅使用手册中的 [Cocos Creator版的特别注意点] 。
 
 
-## 场景视图
+## 将AnimationClip(State)添加到AnimationGraph中 (添加: 2023-03-14)
 
-在模型显示在场景视图，并移动任意Drawable坐标后，执行Undo撤消操作时会发生错误。
-在移动整个模型的坐标时，不会出现这种情况。
+由于Cocos Creator的限制，不可能通过拖放将配置好的AnimationClip State添加到AnimationGraph中。
 
+### 解决方法
 
-### 关于今后的展开
-
-预定在今后发布的alpha版本中进行各种修正。请大家耐心等待后续更新。
+在AnimationGraph编辑界面上点击右键，创建一个State，然后在检查器中设置AnimationClip。
 
 
-## 关于应用程序的导出
+## 表达式场景 (添加: 2023-03-14)
 
-当前在应用程序导出（Build）中发生了一个错误，会导致无法执行应用程序导出。
+安装Cubism SDK for Cocos Creator后，打开和建立一个Expression场景可能无法正确执行。
 
-### 关于今后的展开
+### 解决方法。
 
-计划在今后发布的alpha版本中对Web Desktop进行修复。请大家耐心等待后续更新。
-beta版以后，计划主要会对应面向(Windows,Android,Web Mobile等等)的导出。关于其他平台的导出还在讨论中。
+重新导入`Model\Natori\exp`文件夹并运行构建。
+* 当你重新导入时，你可能会得到一个错误，但场景会正确运行。
+
+
+## 导出应用程序（更新: 2023-03-14）
+
+Cubism SDK for Cocos Creator R1 beta1不能导出到以下平台。
+
+* Windows
+* Android
+
+### 未来
+
+我们将在下一次及以后的更新中解决这个问题。
 
 
 ---

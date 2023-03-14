@@ -143,6 +143,7 @@ export interface ICubismRenderer extends IInputDumpValueBase {
   _isOverwrittenDrawableScreenColor: IProperty<'Boolean'>;
   _multiplyColor: IProperty<'cc.Color'>;
   _screenColor: IProperty<'cc.Color'>;
+  _priorityInEditor: IProperty<'Float'>;
 }
 
 export interface ICubismRenderController extends IInputDumpValueBase {
