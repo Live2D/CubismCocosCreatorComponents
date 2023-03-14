@@ -10,9 +10,9 @@ import { math } from 'cc';
 /** Global variables of physics. */
 namespace CubismPhysics {
   /** Default gravity. */
-  export const gravity: math.Vec2 = new math.Vec2(0, 1);
+  export const gravity: Readonly<math.Vec2> = new math.Vec2(0, -1);
   /** Default direction of wind. */
-  export const wind: math.Vec2 = math.Vec2.ZERO.clone();
+  export const wind: Readonly<math.Vec2> = math.Vec2.ZERO;
   /** Air resistance. */
   export const airResistance: number = 5.0;
   /** Physical maximum weight. */
@@ -23,5 +23,7 @@ namespace CubismPhysics {
   export const useAngleCorrection = true;
   /** Threshold of moving. */
   export const movementThreshold: number = 0.001;
+  /** Constant of maximum allowed delta time */
+  export const maxDeltaTime: number = 5.0;
 }
 export default CubismPhysics;

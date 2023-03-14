@@ -34,6 +34,7 @@ export async function update(this: IPanelThis, dump: IInputDump<ICubismRenderer>
   // helper.material();
   helper.mainTexture();
   helper.localOrder();
+  helper.priority();
 
   const oSection = root.getElementById('main');
   if (oSection) {
@@ -202,6 +203,20 @@ class UI extends InspectorComponentGuiHelper {
         type: localSortingOrder.type,
       });
     });
+    prop.appendChild(content);
+    this.parent.appendChild(prop);
+  }
+
+  public priority() {
+    const { _priorityInEditor, node } = this.values;
+    const prop = this.createPropBase('Priority');
+    const content = this.create(TagName.UI_NUM_INPUT);
+    content.slot = 'content';
+    content.preci = 7;
+    content.step = 0.000001;
+    content.min = Number.MIN_SAFE_INTEGER;
+    content.max = Number.MAX_SAFE_INTEGER;
+    content.value = _priorityInEditor.value;
     prop.appendChild(content);
     this.parent.appendChild(prop);
   }

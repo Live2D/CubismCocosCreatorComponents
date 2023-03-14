@@ -46,10 +46,6 @@ export default class CubismExpressionDataImporter extends Importer {
       return false;
     }
 
-    const baseDir = Path.dirname(asset.source);
-    const name = Path.basenameNoExt(asset.source);
-    const outputFilePath = Path.join(baseDir, name + `.${EXTENSION}`);
-
     const { default: CubismExpressionData } = await ProjectModules.getModule(
       'Framework/Expression/CubismExpressionData'
     );
@@ -66,7 +62,7 @@ export default class CubismExpressionDataImporter extends Importer {
     const data = CubismExpressionData.createInstance(json);
     const serialized = EditorExtends.serialize(data);
     asset.saveToLibrary('.json', serialized);
-    refresh(outputFilePath);
+    refresh(asset.source);
 
     const dirPath = Path.join(Path.dirname(asset.source), '../');
     const dirName = Path.basename(dirPath);

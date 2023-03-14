@@ -26,7 +26,6 @@ const { Vec2 } = MathExtensions;
  */
 type ValueGetter = (
   translation: math.Vec2,
-  parameter: CubismParameter,
   particles: CubismPhysicsParticle[],
   particleIndex: number,
   gravity: math.Vec2
@@ -52,7 +51,6 @@ export default class CubismPhysicsOutput {
    */
   private getOutputTranslationX(
     translation: math.Vec2,
-    parameter: CubismParameter,
     particles: Array<CubismPhysicsParticle>,
     particleIndex: number,
     gravity: math.Vec2
@@ -75,7 +73,6 @@ export default class CubismPhysicsOutput {
    */
   private getOutputTranslationY(
     translation: math.Vec2,
-    parameter: CubismParameter,
     particles: Array<CubismPhysicsParticle>,
     particleIndex: number,
     gravity: math.Vec2
@@ -98,7 +95,6 @@ export default class CubismPhysicsOutput {
    */
   private getOutputAngle(
     translation: math.Vec2,
-    parameter: CubismParameter,
     particles: Array<CubismPhysicsParticle>,
     particleIndex: number,
     gravity: math.Vec2

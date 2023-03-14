@@ -88,16 +88,17 @@ class CubismPhysics3Json {
 
     if (this.physicsSettings != null) {
       if (this.physicsSettings.length != this.meta.physicsSettingCount) {
+        console.warn('PhysicsSettings.Length and Meta.PhysicsSettingCount are unequaled.');
         console.warn(
-          'CubismPhysics3Json.toRig(): PhysicsSettings.Length and Meta.PhysicsSettingCount are unequaled.'
-        );
-        console.warn(
-          'this.physicsSettings.length: %d, this.meta.physicsSettingCount: %d',
+          'physicsSettings.length: %d, this.meta.physicsSettingCount: %d',
           this.physicsSettings.length,
           this.meta.physicsSettingCount
         );
         console.warn(this.physicsSettings);
       }
+      console.trace();
+      instance.fps = this.meta.fps;
+
       instance.subRigs = new Array<CubismPhysicsSubRig | null>(this.physicsSettings.length);
 
       for (var i = 0; i < instance.subRigs.length; i++) {
@@ -883,6 +884,11 @@ namespace CubismPhysics3Json {
     public readonly totalVertexCount: number;
     /** TODO Document. */
     public readonly effectiveForces: SerializableEffectiveForces;
+    /**
+     * [Optional] Fps of physics operations.
+     * If the value is not set to Json, it will change according to the application's operating FPS.
+     */
+    public readonly fps: number;
 
     public constructor(
       args: {
@@ -891,6 +897,7 @@ namespace CubismPhysics3Json {
         totalOutputCount?: number;
         totalVertexCount?: number;
         effectiveForces?: SerializableEffectiveForces;
+        fps?: number;
       } = {}
     ) {
       this.physicsSettingCount = args.physicsSettingCount ?? 0;
@@ -898,6 +905,7 @@ namespace CubismPhysics3Json {
       this.totalOutputCount = args.totalOutputCount ?? 0;
       this.totalVertexCount = args.totalVertexCount ?? 0;
       this.effectiveForces = args.effectiveForces ?? SerializableEffectiveForces.DEFAULT;
+      this.fps = args.fps ?? 0;
     }
 
     public copyWith(
@@ -907,6 +915,7 @@ namespace CubismPhysics3Json {
         totalOutputCount?: number;
         totalVertexCount?: number;
         effectiveForces?: SerializableEffectiveForces;
+        fps?: number;
       } = {}
     ): SerializableMeta {
       return new SerializableMeta({
@@ -915,6 +924,7 @@ namespace CubismPhysics3Json {
         totalOutputCount: args.totalOutputCount ?? this.totalOutputCount,
         totalVertexCount: args.totalVertexCount ?? this.totalVertexCount,
         effectiveForces: args.effectiveForces ?? this.effectiveForces,
+        fps: args.fps ?? this.fps,
       });
     }
 
@@ -925,7 +935,8 @@ namespace CubismPhysics3Json {
             this.totalInputCount == other.totalInputCount &&
             this.totalOutputCount == other.totalOutputCount &&
             this.totalVertexCount == other.totalVertexCount &&
-            this.effectiveForces.equals(other.effectiveForces);
+            this.effectiveForces.equals(other.effectiveForces) &&
+            this.fps == other.fps;
     }
 
     public strictEquals(other: SerializableMeta): boolean {
@@ -964,12 +975,15 @@ namespace CubismPhysics3Json {
       ) {
         return undefined;
       }
+      const fps = asNumber(json.Fps);
+
       return new SerializableMeta({
         physicsSettingCount: physicsSettingCount,
         totalInputCount: totalInputCount,
         totalOutputCount: totalOutputCount,
         totalVertexCount: vertexCount,
         effectiveForces: effectiveForces,
+        fps: fps,
       });
     }
   }

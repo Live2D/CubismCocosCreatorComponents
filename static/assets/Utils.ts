@@ -5,7 +5,7 @@
  * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
  */
 
-import { BaseNode, game, geometry, math, Mesh, Node, utils } from 'cc';
+import { game, geometry, math, Mesh, Node, utils } from 'cc';
 
 export function isNullOrEmpty(value: string | null) {
   return value == null || value.length <= 0;
@@ -32,20 +32,6 @@ export namespace ArrayExtensions {
     }
     return a.every((e, i, _a) => equalityCompareFunc(e, b[i]));
   }
-}
-
-export function findNode(base: BaseNode, name: string): Node | null {
-  for (let i = 0; i < base.children.length; i++) {
-    const item = base.children[i];
-    if (item.name == name && Node.isNode(item)) {
-      return item;
-    }
-    const r = findNode(item, name);
-    if (r != null) {
-      return r;
-    }
-  }
-  return null;
 }
 
 export namespace MeshExtensions {

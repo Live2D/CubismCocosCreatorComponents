@@ -11,9 +11,8 @@ const { Path } = Editor.Utils;
 
 module.paths.push(Path.join(Editor.App.path, 'node_modules'));
 import { Asset, Importer, refresh, VirtualAsset } from '@editor/asset-db';
-import { ProjectModules } from '../../ProjectModules';
 import CubismExpressionDataImporter from './CubismExpressionDataImporter';
-import { registerImportTaskIfItCannotBeCoreInitialized } from './Utils';
+import { existsFile } from './Utils';
 
 const UTF8 = 'utf8';
 
@@ -32,39 +31,41 @@ export default class CubismExp3JsonImporter extends Importer {
     if (asset.isDirectory()) {
       return false;
     }
-    if ('.exp3' != Path.extname(Path.basenameNoExt(asset.source))) {
+
+    const baseDir = Path.dirname(asset.source);
+    const basenameExt = Path.basenameNoExt(asset.source);
+    const basename = Path.basenameNoExt(basenameExt);
+    const secondExt = Path.extname(basenameExt);
+
+    if ('.exp3' != secondExt) {
       return false;
     }
-    return true;
+
+    const outputFilePath = Path.join(
+      baseDir,
+      basename + `.${CubismExpressionDataImporter.extension}`
+    );
+
+    const jsonSrcJson = readFileSync(asset.source, UTF8);
+    let needToCopy = false;
+    if (existsFile(outputFilePath)) {
+      const jsonSrcAsset = readFileSync(outputFilePath, UTF8);
+      needToCopy = jsonSrcJson != jsonSrcAsset;
+    } else {
+      needToCopy = true;
+    }
+    if (!needToCopy) {
+      return false;
+    }
+
+    writeFileSync(outputFilePath, jsonSrcJson);
+    refresh(outputFilePath);
+
+    return false;
   }
 
   public async import(asset: VirtualAsset | Asset): Promise<boolean> {
-    if (!(await registerImportTaskIfItCannotBeCoreInitialized(asset.source))) {
-      return false;
-    }
-
-    const baseDir = Path.dirname(asset.source);
-    const name = Path.basenameNoExt(Path.basenameNoExt(asset.source));
-    const outputFilePath = Path.join(baseDir, name + `.${CubismExpressionDataImporter.extension}`);
-
-    const { default: CubismExpressionData } = await ProjectModules.getModule(
-      'Framework/Expression/CubismExpressionData'
-    );
-    const { default: CubismExp3Json } = await ProjectModules.getModule(
-      'Framework/Json/CubismExp3Json'
-    );
-
-    const jsonSrc = readFileSync(asset.source, UTF8);
-    const json = CubismExp3Json.loadFrom(jsonSrc);
-    if (json == null) {
-      console.error('CubismExp3Json.loadFrom() is failed.');
-      return false;
-    }
-    const data = CubismExpressionData.createInstance(json);
-    const serialized = EditorExtends.serialize(data);
-    writeFileSync(outputFilePath, jsonSrc);
-    asset.saveToLibrary('.json', serialized);
-    refresh(outputFilePath);
-    return true;
+    // JsonAssetとしてインポートする都合上、常に validate が false を返すため実行されない。
+    return false;
   }
 }

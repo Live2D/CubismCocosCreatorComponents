@@ -431,6 +431,10 @@ export default class CubismRenderer extends Component {
   }
   //#endregion
 
+  /** Editor Inspector 表示用 */
+  @property({ type: CCFloat, serializable: true })
+  private _priorityInEditor: number = 0;
+
   /**
    * Swaps mesh buffers.
    *
@@ -647,12 +651,14 @@ export default class CubismRenderer extends Component {
           ? this.renderOrder + this.localSortingOrder
           : -(this.renderOrder + this.localSortingOrder));
       this.node.position = math.Vec3.ZERO;
+      this._priorityInEditor = this.meshRenderer.priority;
       return;
     }
     // Sort by depth.
     let offset =
       this.sortingMode == CubismSortingMode.backToFrontZ ? this.depthOffset : -this.depthOffset;
     this.meshRenderer.priority = this.sortingOrder + this.localSortingOrder;
+    this._priorityInEditor = this.meshRenderer.priority;
     this.node.position = new math.Vec3(0, 0, this.renderOrder * offset);
   }
 
