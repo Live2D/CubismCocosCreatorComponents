@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 
+## [beta.2] - 2023-03-16
+
+### Fixed
+
+* Fix some problems related to Cubism Core.
+  * See `CHANGELOG.md` in Core.
+
+
 ## [beta.1] - 2023-03-14
 
 ### Added
@@ -34,5 +42,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 * New released!
 
+
+[beta.2]: https://github.com/Live2D/CubismCocosCreatorComponents/compare/4-r.1-beta.1...4-r.1-beta.2
 [beta.1]: https://github.com/Live2D/CubismCocosCreatorComponents/compare/4-r.1-alpha.1...4-r.1-beta.1
 [alpha.1]: https://github.com/Live2D/CubismCocosCreatorComponents/releases/tag/4-r.1-alpha.1
