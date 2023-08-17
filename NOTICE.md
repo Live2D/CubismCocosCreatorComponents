@@ -31,6 +31,12 @@ Currently, due to a limitation in Cocos Creator, it is not possible to add an An
 Right-click on the AnimationGraph edit screen, create a State, and then set the AnimationClip in the Inspector.
 
 
+## Animation curves (Added: 2023-08-17)
+
+We have confirmed that when importing a `.motion3.json` file with the animation curve set to `stepped`, `stepped` is not reproduced.
+This will be fixed in the next update, so please wait for a while.
+
+
 ## Expression scene (Added: 2023-03-14)
 
 After installing Cubism SDK for Cocos Creator, opening and building an Expression scene may not execute correctly.
@@ -41,11 +47,10 @@ Reimport the `Model\Natori\exp` folder and run the build.
 * You may get an error when you Reimport, but the scene will run correctly.
 
 
-## Exporting applications (Updated: 2023-03-14)
+## Exporting applications (Updated: 2023-08-17)
 
 Cubism SDK for Cocos Creator R1 beta1 does not export to the following platforms.
 
-* Windows
 * Android
 
 ### Future

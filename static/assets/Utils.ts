@@ -314,3 +314,36 @@ export namespace MathExtensions {
 export function isImporter() {
   return Reflect.has(window, 'AssetDB');
 }
+
+export namespace EditorUtils {
+  //import type IQueryNodeResult from './Dump/Query/IQueryNodeResult';
+  export type IQueryNodeResult = any;
+  export function getComponentPath(self: IQueryNodeResult, uuid: string): string | null {
+    const comps = self.__comps__;
+    for (let i = 0; i < comps.length; i++) {
+      if (comps[i].value.uuid.value == uuid) {
+        return '__comps__.' + i;
+      }
+    }
+    return null;
+  }
+  export async function applyComponentProperty(
+    nodeUuid: string,
+    compUuid: string,
+    property: string,
+    value: number,
+    type: 'Integer' | 'Float' | 'Enum'
+  ): Promise<void> {
+    const tree = await Editor.Message.request('scene', 'query-node', nodeUuid);
+    const path = EditorUtils.getComponentPath(tree, compUuid);
+    if (path == null) {
+      return;
+    }
+    console.info(`set-property: ${path}.${property}`);
+    await Editor.Message.request('scene', 'set-property', {
+      uuid: nodeUuid,
+      path: `${path}.${property}`,
+      dump: { value: value, type: type },
+    });
+  }
+}

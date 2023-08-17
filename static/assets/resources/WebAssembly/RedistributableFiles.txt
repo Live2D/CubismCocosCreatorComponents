@@ -2,6 +2,6 @@ The following is a list of files available for redistribution
 under the terms of the Live2D Proprietary Software License Agreement:
 
 - /static/assets/resources/WebAssembly/Live2DCubismCore.bin
-- /static/assets/resources/WebAssembly/Live2DCubismCore.d.ts
-- /static/assets/resources/WebAssembly/Live2DCubismCore.js
+- /static/assets/Live2DCubismCore.d.ts
+- /static/assets/Live2DCubismCore.js
 - /static/assets/CubismCore.ts

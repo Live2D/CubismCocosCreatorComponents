@@ -4,9 +4,12 @@
 
 # CubismCocosCreatorComponents
 
-Welcome to the open components of the Cubism SDK for Cocos Creator.
+This is a open components for using models output by Live2D Cubism Editor in applications.
 
-Go [here](https://docs.live2d.com/en/cubism-sdk-manual/download-sdk-for-cc-alpha/) if you're looking for the download page of the SDK package.
+It provides various functions for displaying and manipulating the model.
+It is used in conjunction with the Cubism Core library to load the model.
+
+If you are looking for the download page of the SDK package, please refer to [Download Page](https://www.live2d.com/en/download/cubism-sdk/download-cocoscreator/).
 
 ## License
 
@@ -15,6 +18,13 @@ Please read the [license](LICENSE.md) before use.
 ## Notices
 
 Please read the [notices](NOTICE.md) before use.
+
+## Compatibility with Cubism 5 new features and previous Cubism SDK versions
+
+This SDK is compatible with Cubism 5.  
+For SDK compatibility with new features in Cubism 5 Editor, please refer to [here](https://docs.live2d.com/en/cubism-sdk-manual/cubism-5-new-functions/).  
+For compatibility with previous versions of Cubism SDK, please refer to [here](https://docs.live2d.com/en/cubism-sdk-manual/compatibility-with-cubism-5/).
+
 
 ## Structure
 
@@ -47,11 +57,11 @@ Resources like shaders and other assets are located in `./static/assets/resource
 
 | Cocos Creator | version |
 | --- | --- |
-| latest | v3.7.1 |
+| latest | v3.7.3 |
 
 | Tools | version |
 | --- | --- |
-| Node.js | v19.1.0 |
+| Node.js | v20.5.1 |
 
 
 ## Confirmation of operation

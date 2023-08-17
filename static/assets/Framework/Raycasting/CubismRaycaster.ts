@@ -113,9 +113,7 @@ export default class CubismRaycaster extends Component {
     // Cast ray against model plane.
     const origin = Vector3.from(ray.o);
     const direction = Vector3.from(ray.d);
-    const intersectionInWorldSpace = origin.add(
-      direction.multiplySingle(direction.z / origin.z)
-    );
+    const intersectionInWorldSpace = origin.add(direction.multiplySingle(direction.z / origin.z));
     let intersectionInLocalSpace = Vector3.from(
       this.node.inverseTransformPoint(new math.Vec3(), intersectionInWorldSpace.toBuiltinType())
     );
@@ -127,15 +125,16 @@ export default class CubismRaycaster extends Component {
     }
     // Cast against each raycastable.
     let hitCount = 0;
-    console.assert(this.raycastables);
+    console.assert(this.raycastables != null);
     const raycastables = this.raycastables!;
-    console.assert(this.raycastablePrecisions);
+    console.assert(this.raycastablePrecisions != null);
     const raycastablePrecisions = this.raycastablePrecisions!;
+
     for (let i = 0; i < raycastables.length; i++) {
       const raycastable = raycastables[i];
       const raycastablePrecision = raycastablePrecisions[i];
       // Skip inactive raycastables.
-      console.assert(raycastable.meshRenderer);
+      console.assert(raycastable.meshRenderer != null);
       if (!raycastable.meshRenderer!.enabled) {
         continue;
       }

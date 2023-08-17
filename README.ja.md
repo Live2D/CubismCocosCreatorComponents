@@ -4,9 +4,11 @@
 
 # CubismCocosCreatorComponents
 
-Cocos Creator用のCubismSDKのオープンコンポーネントです。
+Live2D Cubism Editor で出力したモデルをアプリケーションで利用するためのオープンコンポーネントです。
 
-SDKパッケージのダウンロードページをお探しの場合は、[ダウンロードページ](https://docs.live2d.com/cubism-sdk-manual/download-sdk-for-cc-alpha/)にアクセスしてください。
+モデルを表示、操作するための各種機能を提供します。 モデルをロードするには Cubism Core ライブラリと組み合わせて使用します。
+
+SDKパッケージのダウンロードページをお探しの場合は、[ダウンロードページ](https://www.live2d.com/download/cubism-sdk/download-cocoscreator/)にアクセスしてください。
 
 ## ライセンス
 
@@ -15,6 +17,13 @@ SDKパッケージのダウンロードページをお探しの場合は、[ダ�
 ## お知らせ
 
 ご使用前に[お知らせ](NOTICE.md)をお読みください。
+
+## Cubism 5新機能や過去バージョンとの互換性について
+
+本 SDK はCubism 5に対応した製品です。  
+Cubism 5 Editorに搭載された新機能のSDK対応については [こちら](https://docs.live2d.com/cubism-sdk-manual/cubism-5-new-functions/)をご確認ください。  
+過去バージョンのCubism SDKとの互換性については [こちら](https://docs.live2d.com/cubism-sdk-manual/compatibility-with-cubism-5/)をご確認ください。
+
 
 ## 構造
 
@@ -47,11 +56,11 @@ CubismファイルをプレハブとAnimationClipに変換するのはここで�
 
 | Cocos Creator | バージョン |
 | --- | --- |
-| latest | v3.7.1 |
+| latest | v3.7.3 |
 
 | ツール | バージョン |
 | --- | --- |
-| Node.js | v19.1.0 |
+| Node.js | v20.5.1 |
 
 
 ## 動作確認について

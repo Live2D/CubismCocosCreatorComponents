@@ -4,9 +4,11 @@
 
 # CubismCocosCreatorComponents
 
-面向Cocos Creator引擎的CubismSDK的组件。
+开放式组件，用于在应用程序中使用 Live2D Cubism Editor 输出的模型。
 
-要找到SDK包的下载页面，请前往[下载页面](https://docs.live2d.com/zh-CHS/cubism-sdk-manual/download-sdk-for-cc-alpha/)。
+它提供各种显示和操作模型的功能。它与 Cubism Core 库结合使用，以加载模型。
+
+要查找 SDK 软件包的下载页面，请访问 [下载页面](https://www.live2d.com/zh-CHS/download/cubism-sdk/download-cocoscreator/)。
 
 ## 许可证
 
@@ -16,7 +18,14 @@
 
 使用前请阅读[NOTICE](NOTICE.cn.md)。
 
-##构造
+## 与 Cubism 5 新功能和旧版本兼容
+
+本 SDK 与 Cubism 5 兼容。 
+请查看 [此处](https://docs.live2d.com/cubism-sdk-manual/cubism-5-new-functions/) SDK 与 Cubism 5 Editor 新功能的兼容性。 
+关于与 Cubism SDK 先前版本的兼容性，请参阅 [此处](https://docs.live2d.com/cubism-sdk-manual/compatibility-with-cubism-5/)。
+
+
+## 构造
 
 ### 组件
 
@@ -48,16 +57,16 @@ Cocos Creator Editor扩展功能可以在`./src`找到。
 
 | Cocos Creator | 版本 |
 | --- | --- |
-| 最新的 | v3.7.1 |
+| 最新的 | v3.7.3 |
 
 |工具 |版本 |
 | --- | --- |
-| Node.js | v19.1.0 |
+| Node.js | v20.5.1 |
 
 
 ##关于动作确认
 
-1. 安装Node.js / npm。 (如果你已经安装了它请跳过）。
+1. 安装Node.js / npm。 （如果你已经安装了它请跳过）。
 
    - https://nodejs.org/en/
 
