@@ -23,10 +23,16 @@ import CubismShaderVariables from '../Rendering/CubismShaderVariables';
 import CubismSortingMode from '../Rendering/CubismSortingMode';
 import CubismMaskProperties from '../Rendering/Masking/CubismMaskProperties';
 import CubismMeshPrimitive from './CubismMeshPrimitive';
-import { isImporter } from '../Utils';
+import { EditorUtils, isImporter } from '../Utils';
 import type IStructLike from '../IStructLike';
 import CubismRenderController from './CubismRenderController';
 const { ccclass, property, requireComponent, executeInEditMode } = _decorator;
+
+export namespace CubismRendererInEditorSymbols {
+  export const onControllerSortingOrderDidChange = Symbol.for('onControllerSortingOrderDidChange');
+  export const onControllerSortingModeDidChange = Symbol.for('onControllerSortingModeDidChange');
+  export const onControllerDepthOffsetDidChange = Symbol.for('onControllerDepthOffsetDidChange');
+}
 
 /** Wrapper for drawing CubismDrawables. */
 @ccclass('CubismRenderer')
@@ -517,6 +523,19 @@ export default class CubismRenderer extends Component {
     this.applySorting();
   }
 
+  /** In editor method. */
+  [CubismRendererInEditorSymbols.onControllerSortingModeDidChange](
+    newSortingMode: CubismSortingMode
+  ) {
+    EditorUtils.applyComponentProperty(
+      this.node.uuid,
+      this.uuid,
+      'sortingMode',
+      newSortingMode,
+      'Enum'
+    ).then(() => this.applySorting());
+  }
+
   /**
    * Updates sorting order.
    * @param newSortingOrder New sorting order.
@@ -524,6 +543,17 @@ export default class CubismRenderer extends Component {
   public onControllerSortingOrderDidChange(newSortingOrder: number): void {
     this.sortingOrder = newSortingOrder;
     this.applySorting();
+  }
+
+  /** In editor method. */
+  [CubismRendererInEditorSymbols.onControllerSortingOrderDidChange](newSortingOrder: number) {
+    EditorUtils.applyComponentProperty(
+      this.node.uuid,
+      this.uuid,
+      'sortingOrder',
+      newSortingOrder,
+      'Float'
+    ).then(() => this.applySorting());
   }
 
   /**
@@ -534,6 +564,17 @@ export default class CubismRenderer extends Component {
     this.depthOffset = newDepthOffset;
 
     this.applySorting();
+  }
+
+  /** In editor method. */
+  [CubismRendererInEditorSymbols.onControllerDepthOffsetDidChange](newDepthOffset: number) {
+    EditorUtils.applyComponentProperty(
+      this.node.uuid,
+      this.uuid,
+      'depthOffset',
+      newDepthOffset,
+      'Float'
+    ).then(() => this.applySorting());
   }
 
   /**

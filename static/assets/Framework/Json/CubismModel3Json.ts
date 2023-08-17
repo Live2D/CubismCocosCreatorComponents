@@ -59,7 +59,7 @@ import { EDITOR } from 'cc/env';
 const { property } = _decorator;
 
 //#region Delegates
-namespace CubismModel3Json {
+declare namespace CubismModel3Json {
   /**
    * Handles the loading of assets.
    *
@@ -1295,7 +1295,12 @@ namespace Internal {
           CubismDisplayInfoParameterName
         );
         console.assert(cubismDisplayInfoParameterName);
-        cubismDisplayInfoParameterName!.parameterName = cdi3Json.parameters[i].name;
+        for (let j = 0; j < cdi3Json.parameters.length; j++) {
+          if (cdi3Json.parameters[j].id == parameters[i].id) {
+            cubismDisplayInfoParameterName!.parameterName = cdi3Json.parameters[j].name;
+            break;
+          }
+        }
         cubismDisplayInfoParameterName!.displayName = '';
       }
     }
@@ -1308,7 +1313,12 @@ namespace Internal {
       for (let i = 0; i < parts.length; i++) {
         const cubismDisplayInfoPartNames = parts[i].addComponent(CubismDisplayInfoPartName);
         console.assert(cubismDisplayInfoPartNames);
-        cubismDisplayInfoPartNames!.partName = cdi3Json.parts[i].name;
+        for (let j = 0; j < cdi3Json.parts.length; j++) {
+          if (cdi3Json.parts[j].id == parts[i].id) {
+            cubismDisplayInfoPartNames!.partName = cdi3Json.parts[j].name;
+            break;
+          }
+        }
         cubismDisplayInfoPartNames!.displayName = '';
       }
     }

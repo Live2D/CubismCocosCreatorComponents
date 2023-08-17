@@ -33,6 +33,12 @@ Cocos Creatorの [Project]-[Project Settings]-[Layers]にございます`User La
 AnimationGraph 編集画面を右クリックして State を作成後 Inspector より AnimationClip を設定して下さい。
 
 
+## アニメーションカーブ (2023-08-17追加)
+
+現在、アニメーションカーブにsteppedが設定されている.motion3.jsonをインポートした際に、steppedが再現されない現象が確認されています。
+次回以降の更新にて対応いたしますので、しばらくお待ち下さい。
+
+
 ## Expression シーン (2023-03-14追加)
 
 Cubism SDK for Cocos Creator の導入作業後にExpressionシーンを開いてビルド実行すると、正しく実行できない場合があります。
@@ -43,16 +49,16 @@ Cubism SDK for Cocos Creator の導入作業後にExpressionシーンを開い�
 * Reimportした際にエラーが出る場合がありますが、シーンは正しく実行できるようになります。
 
 
-## アプリ書き出し (2023-03-14更新)
+## アプリ書き出し (2023-08-17更新)
 
 Cubism SDK for Cocos Creator R1 beta1 にて以下プラットフォーム書き出しができない現象がございます。
 
-* Windows
 * Android
 
 ### 今後について
 
 次回以降の更新にて順次対応いたします。
+
 
 ---
 

@@ -11,7 +11,6 @@ import { IVector3, CubismVector3 as Vector3 } from './CubismVector';
 
 // https://github.com/Unity-Technologies/UnityCsReference/blob/0a2eeb7a72710d89cccdb6aeee8431d27ee99cd1/Runtime/Export/Geometry/Bounds.cs
 export class CubismBounds implements IStructLike<CubismBounds> {
-
   private readonly cx: number;
   private readonly cy: number;
   private readonly cz: number;

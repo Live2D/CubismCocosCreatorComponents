@@ -4,8 +4,7 @@
  * Use of this source code is governed by the Live2D Open Software license
  * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
  */
- 
- 
+
 import { CCFloat, CCInteger, Color, math, Mesh, primitives, utils, _decorator } from 'cc';
 import { CubismBounds as Bounds } from '../Core/CubismGeometry';
 const { ccclass, property } = _decorator;
@@ -163,7 +162,8 @@ export default class CubismMeshPrimitive {
       y: min.y,
       z: min.z,
     };
-    for (let i = 1; i < positions.length / 3; i++) {
+    const count = Math.trunc(positions.length / 3);
+    for (let i = 1; i < count; i++) {
       const x = positions[i * 3 + 0];
       const y = positions[i * 3 + 1];
       const z = positions[i * 3 + 2];
@@ -177,6 +177,13 @@ export default class CubismMeshPrimitive {
     }
     const o = { x: 0, y: 0, z: 0 };
     math.Vec3.lerp(o, min, max, 0.5);
-    return new Bounds(o.x, o.y, o.z, max.x - min.x, max.y - min.y, max.z - min.z);
+    return new Bounds(
+      o.x,
+      o.y,
+      o.z,
+      (max.x - min.x) * 0.5,
+      (max.y - min.y) * 0.5,
+      (max.z - min.z) * 0.5
+    );
   }
 }

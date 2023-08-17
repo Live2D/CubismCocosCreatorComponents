@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 
+## [5-r.1-beta.1] - 2023-08-17
+
+## Added
+
+* Add Wankoromochi as a model bundled with SDK.
+* Add sample scenes `MultipleModels`, `PerspectiveCamera`, `Raycasting`.
+* Projects can be built specifying `Windows` platform.
+
+### Fixed
+
+* Fix an issue where information was being got using indexes instead of IDs when getting cdi3.json data.
+* Fix an issue in the Bounds calculation process.
+* Fix an issue where values changed from Inspector via CubismRenderController(CubismRenderer.onController~) were not serialized.
+
+
 ## [beta.2] - 2023-03-16
 
 ### Fixed
@@ -43,6 +58,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * New released!
 
 
+[5-r.1-beta.1]: https://github.com/Live2D/CubismCocosCreatorComponents/compare/4-r.1-beta.2...5-r.1-beta.1
 [beta.2]: https://github.com/Live2D/CubismCocosCreatorComponents/compare/4-r.1-beta.1...4-r.1-beta.2
 [beta.1]: https://github.com/Live2D/CubismCocosCreatorComponents/compare/4-r.1-alpha.1...4-r.1-beta.1
 [alpha.1]: https://github.com/Live2D/CubismCocosCreatorComponents/releases/tag/4-r.1-alpha.1

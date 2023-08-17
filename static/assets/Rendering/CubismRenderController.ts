@@ -17,7 +17,7 @@ import {
   Component,
   Asset,
 } from 'cc';
-import CubismRenderer from './CubismRenderer';
+import CubismRenderer, { CubismRendererInEditorSymbols as InEditorSymbols } from './CubismRenderer';
 import CubismSortingMode from './CubismSortingMode';
 import CubismUpdateExecutionOrder from '../Framework/CubismUpdateExecutionOrder';
 import CubismUpdateController from '../Framework/CubismUpdateController';
@@ -27,10 +27,10 @@ import CoreComponentExtensionMethods from '../Core/ComponentExtensionMethods';
 import FrameworkComponentExtensionMethods from '../Framework/ComponentExtensionMethods';
 import ICubismDrawOrderHandler from './ICubismDrawOrderHandler';
 import ICubismOpacityHandler from './ICubismOpacityHandler';
+import ICubismBlendColorHandler from './ICubismBlendColorHandler';
 import type CubismModel from '../Core/CubismModel';
 import type CubismDynamicDrawableData from '../Core/CubismDynamicDrawableData';
 import { EDITOR } from 'cc/env';
-import ICubismBlendColorHandler from './ICubismBlendColorHandler';
 const { ccclass, property, executeInEditMode } = _decorator;
 
 @ccclass('CubismRenderController')
@@ -175,8 +175,15 @@ export default class CubismRenderController extends Component implements ICubism
       return;
     }
 
-    for (let i = 0; i < renderers.length; i++) {
-      renderers[i].onControllerSortingModeDidChange(this._sortingMode);
+    if (!EDITOR) {
+      for (let i = 0; i < renderers.length; i++) {
+        renderers[i].onControllerSortingModeDidChange(this._sortingMode);
+      }
+    } else {
+      for (let i = 0; i < renderers.length; i++) {
+        console.assert(renderers[i][InEditorSymbols.onControllerSortingModeDidChange] != null);
+        renderers[i][InEditorSymbols.onControllerSortingModeDidChange](this._sortingOrder);
+      }
     }
   }
   //#endregion
@@ -206,8 +213,15 @@ export default class CubismRenderController extends Component implements ICubism
       return;
     }
 
-    for (var i = 0; i < renderers.length; ++i) {
-      renderers[i].onControllerSortingOrderDidChange(this._sortingOrder);
+    if (!EDITOR) {
+      for (let i = 0; i < renderers.length; i++) {
+        renderers[i].onControllerSortingOrderDidChange(this._sortingOrder);
+      }
+    } else {
+      for (let i = 0; i < renderers.length; i++) {
+        console.assert(renderers[i][InEditorSymbols.onControllerSortingOrderDidChange] != null);
+        renderers[i][InEditorSymbols.onControllerSortingOrderDidChange](this._sortingOrder);
+      }
     }
   }
   //#endregion
@@ -397,8 +411,15 @@ export default class CubismRenderController extends Component implements ICubism
       return;
     }
 
-    for (var i = 0; i < renderers.length; i++) {
-      renderers[i].onControllerDepthOffsetDidChange(this._depthOffset);
+    if (!EDITOR) {
+      for (let i = 0; i < renderers.length; i++) {
+        renderers[i].onControllerDepthOffsetDidChange(this._depthOffset);
+      }
+    } else {
+      for (let i = 0; i < renderers.length; i++) {
+        console.assert(renderers[i][InEditorSymbols.onControllerDepthOffsetDidChange] != null);
+        renderers[i][InEditorSymbols.onControllerDepthOffsetDidChange](this._depthOffset);
+      }
     }
   }
   //#endregion
@@ -506,13 +527,10 @@ export default class CubismRenderController extends Component implements ICubism
       this.opacityHandlerInterface == null || this.opacity > 1 - math.EPSILON;
 
     if (applyOpacityToRenderers) {
-      const renderers = this.renderers;
-      if (renderers == null) {
-        console.error('CubismRenderController.renderers is null.');
-      } else {
-        for (let i = 0; i < renderers.length; i++) {
-          renderers[i].onModelOpacityDidChange(this.opacity);
-        }
+      console.assert(this.renderers != null, 'renderers is null.');
+      const renderers = this.renderers!;
+      for (let i = 0; i < renderers.length; i++) {
+        renderers[i].onModelOpacityDidChange(this.opacity);
       }
     }
 

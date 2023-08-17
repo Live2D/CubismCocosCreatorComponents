@@ -9,7 +9,7 @@ import type ICubismTask from './ICubismTask';
 
 //#region Delegates
 
-namespace CubismTaskQueue {
+declare namespace CubismTaskQueue {
   /**
    * Handles ICubismTasks.
    * @param task
