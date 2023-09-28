@@ -61,7 +61,7 @@ Cocos Creator Editor扩展功能可以在`./src`找到。
 
 |工具 |版本 |
 | --- | --- |
-| Node.js | v20.5.1 |
+| Node.js | v20.7.0 |
 
 
 ##关于动作确认
@@ -112,16 +112,20 @@ CocosCreatorProject # Cocos Creator 中创建的项目
 ```
 
 ## Live2D official GitHub
-如果你对Cubism SDK for Cocos Creator alpha版本有任何建议，请将它们发送到CubismCocosCreatorComponents仓库的issue或Pull Request。
+
+如果你对Cubism SDK for Cocos Creator本有任何建议，请将它们发送到CubismCocosCreatorComponents仓库的issue或Pull Request。
+
 - [CubismCocosCreatorComponents](https://github.com/Live2D/CubismCocosCreatorComponents)
 - [Live2D GitHub](https://github.com/Live2D)
 
 ## 手册和教程
+
 - [教程](https://docs.live2d.com/zh-CHS/cubism-sdk-tutorials/top/)
 - [手册](https://docs.live2d.com/zh-CHS/cubism-sdk-manual/top/)
 
 今后将增加中文的手册和教程。
 
-## 社区
-- [官方Live2D社区](https://creatorsforum.live2d.com/)
-- [Live2D社区（英文）](https://community.live2d.com/)
+## 用户论坛
+
+- [官方Live2D用户论坛](https://creatorsforum.live2d.com/)
+- [Live2D用户论坛（英文）](https://community.live2d.com/)
