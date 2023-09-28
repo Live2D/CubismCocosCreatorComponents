@@ -1,9 +1,10 @@
 {
   "ver": "1.0.0",
-  "importer": "fade.asset",
+  "importer": "*",
   "imported": true,
   "uuid": "f4244e8e-05f8-4dde-b1f3-b344be790e9f",
   "files": [
+    ".asset",
     ".json"
   ],
   "subMetas": {},

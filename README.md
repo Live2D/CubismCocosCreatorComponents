@@ -61,7 +61,7 @@ Resources like shaders and other assets are located in `./static/assets/resource
 
 | Tools | version |
 | --- | --- |
-| Node.js | v20.5.1 |
+| Node.js | v20.7.0 |
 
 
 ## Confirmation of operation
@@ -114,14 +114,18 @@ CocosCreatorProject # Projects created with Cocos Creator
 ```
 
 ## Live2D official GitHub
-If you have any questions about the Cubism SDK for Cocos Creator alpha version, please send an issue or pull request to the Live2D GitHub repository.
+
+If you have any questions about the Cubism SDK for Cocos Creator, please send an issue or pull request to the Live2D GitHub repository.
+
 - [CubismCocosCreatorComponents](https://github.com/Live2D/CubismCocosCreatorComponents)
 - [Live2D GitHub](https://github.com/Live2D)
 
 ## Manuals and Tutorials
+
 - [Tutorial](https://docs.live2d.com/en/cubism-sdk-tutorials/top/)
 - [Manual](https://docs.live2d.com/en/cubism-sdk-manual/top/)
 
-## Community
-- [Live2D community (English)](https://community.live2d.com/)
-- [Live2D 公式コミュニティ (Japanese)](https://creatorsforum.live2d.com/)
+## Forum
+
+- [Live2D Creator's Forum (English)](https://community.live2d.com/)
+- [Live2D 公式クリエイターズフォーラム (Japanese)](https://creatorsforum.live2d.com/)
